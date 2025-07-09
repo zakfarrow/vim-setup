@@ -6,47 +6,30 @@ return {
 	},
 	config = function()
 		require("mason").setup()
+
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls", "ts_ls" },
-			automatic_installation = false,
-			handlers = {
-				-- Default handler (basic setup)
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-
-				-- Custom handler for lua_ls
-				["lua_ls"] = function()
-					require("lspconfig").lua_ls.setup({
-						settings = {
-							Lua = {
-								runtime = {
-									version = "LuaJIT",
-								},
-								diagnostics = { globals = { "vim" } },
-								workspace = {
-									library = vim.api.nvim_get_runtime_file("", true),
-									checkThirdParty = false,
-								},
-								telemetry = {
-									enable = false,
-								},
-							},
-						},
-					})
-				end,
-
-				-- Custom handler for ts_ls
-				["ts_ls"] = function()
-					require("lspconfig").ts_ls.setup({
-						settings = {
-							typescript = {
-								inlayHints = { includeInlayParameterNameHints = "all" },
-							},
-						},
-					})
-				end,
+			ensure_installed = {
+				"lua_ls",
+				"pyright",
+				"ts_ls",
+				"clangd",
 			},
 		})
+
+		local lspconfig = require("lspconfig")
+
+		lspconfig.lua_ls.setup({
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
+		})
+
+		lspconfig.pyright.setup({})
+		lspconfig.ts_ls.setup({})
+		lspconfig.clangd.setup({})
 	end,
 }
