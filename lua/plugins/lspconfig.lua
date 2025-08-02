@@ -13,6 +13,8 @@ return {
 				"pyright",
 				"ts_ls",
 				"clangd",
+				"gopls",
+				"templ",
 			},
 		})
 
@@ -31,5 +33,7 @@ return {
 		lspconfig.pyright.setup({})
 		lspconfig.ts_ls.setup({})
 		lspconfig.clangd.setup({})
+		lspconfig.gopls.setup({})
+		lspconfig.templ.setup({})
 	end,
 }
