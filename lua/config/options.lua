@@ -13,3 +13,15 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.relativenumber = true
   end,
 })
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    source = 'always',
+    border = 'rounded',
+  },
+})
