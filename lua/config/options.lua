@@ -6,8 +6,8 @@ vim.opt.smartindent = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'netrw',
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
   callback = function()
     vim.opt_local.number = true
     vim.opt_local.relativenumber = true
@@ -21,7 +21,7 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
   float = {
-    source = 'always',
-    border = 'rounded',
+    source = "always",
+    border = "rounded",
   },
 })
