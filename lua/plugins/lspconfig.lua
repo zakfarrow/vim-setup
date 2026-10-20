@@ -15,6 +15,7 @@ return {
         "clangd",
         "gopls",
         "templ",
+        "ols"
       },
     })
 
@@ -83,5 +84,11 @@ return {
       root_markers = { "go.mod", ".git" },
     })
     vim.lsp.enable("templ")
+
+    -- Odin
+    vim.lsp.config("ols", {
+      cmd = { "ols" },
+    })
+    vim.lsp.enable("ols")
   end,
 }
